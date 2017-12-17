@@ -22,7 +22,7 @@ public class TableCellTextAreaRenderer extends JTextArea implements TableCellRen
 	       if (table.getRowHeight(row) != maxPreferredHeight)  
 	         table.setRowHeight(60);   
 	         
-	         setFont(new Font("微软雅黑", Font.PLAIN, 15));  
+	         setFont(new Font("微軟正黑體", Font.PLAIN, 14));  
 	         setText(value == null ? "" : value.toString());   
 	         if(row%2 == 0){  
 	            setBackground(Color.decode("#E0FFFF"));  
