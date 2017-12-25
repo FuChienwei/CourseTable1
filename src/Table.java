@@ -2,12 +2,12 @@ import javax.swing.*;
 
 public abstract class Table implements Method{
 
-
+	JPanel contentPane;
     JTable table;
     String name;
     Object[][] data;
 
-
+    
     @Override
     abstract public void load();
 
@@ -26,7 +26,8 @@ public abstract class Table implements Method{
     @Override
     abstract public void contactbook();
 
-    @Override
+    abstract public void addPane(JPanel contentPane);
+  
     public JTable getTable() {
         return table;
     }

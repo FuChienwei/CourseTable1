@@ -39,4 +39,10 @@ public class NTU extends Table {
     public void contactbook() {
 
     }
+
+	@Override
+	public void addPane(JPanel contentPane) {
+		// TODO Auto-generated method stub
+		
+	}
 }

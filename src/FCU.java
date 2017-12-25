@@ -1,8 +1,15 @@
+import java.awt.Choice;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class FCU extends Table {
-
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
+	private JTextField textField;
+	private JTextField textField_1;
     public FCU(String name, JTable table){
         super.name=name;
         super.table=table;
@@ -69,6 +76,68 @@ public class FCU extends Table {
     public void contactbook() {
 
     }
+
+
+	@Override
+	public void addPane(JPanel contentPane) {
+		JButton btnNewButton = new JButton("新增內容");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		btnNewButton.setBounds(481, 21, 87, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("123");
+		btnNewButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		btnNewButton_1.setBounds(578, 584, 87, 23);
+		contentPane.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnNewButton_2.setBounds(311, 584, 87, 23);
+		contentPane.add(btnNewButton_2);
+		
+		Choice choice = new Choice();
+		choice.setBounds(58, 21, 93, 21);
+		choice.add("星期一");
+		choice.add("星期二");
+		choice.add("星期三");
+		choice.add("星期四");
+		choice.add("星期五");
+		choice.add("星期六");
+		
+		contentPane.add(choice);
+		
+		Choice choice_2 = new Choice();
+		choice_2.setBounds(201, 21, 93, 21);
+		contentPane.add(choice_2);
+		
+		textField = new JTextField();
+		textField.setBounds(58, 585, 96, 21);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(336, 22, 96, 21);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		
+	}
 
 
 }

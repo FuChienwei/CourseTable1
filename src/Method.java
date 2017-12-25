@@ -2,12 +2,13 @@ import javax.swing.*;
 
 public interface Method {
 
-    abstract public void load();         //è¼‰å…¥
-    abstract public void notice();       //é€šçŸ¥
-    abstract public void slide();        //æ»‘å‹•
-    abstract public void switchView();   //è¦–åœ–/week/day/month
-    abstract public void lunch();        //ä¸­é¤
-    abstract public void contactbook();  //è¯çµ¡ç°¿
-    public JTable getTable();
+    abstract public void load();              //¸ü¤J
+    abstract public void notice();            //³qª¾
+    abstract public void slide();             //·Æ°Ê
+    abstract public void switchView();        //µø¹Ï/week/day/month   
+    abstract public void lunch();             //¤¤À\
+    abstract public void contactbook();       //Ápµ¸Ã¯
+    public JTable getTable();                 //§ìªí
+	abstract void addPane(JPanel contentPane);//§ì¤¸¥ó
 
 }
