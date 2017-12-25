@@ -6,10 +6,12 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class FCU extends Table {
+	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
 	private JTextField textField;
 	private JTextField textField_1;
+	private Choice choice,choice_2;
     public FCU(String name, JTable table){
         super.name=name;
         super.table=table;
@@ -39,7 +41,12 @@ public class FCU extends Table {
                 new String[] {
                         "New column", "New column", "New column", "New column", "New column", "New column", "New column"
                 }
-        ));
+ ) {
+        		 boolean[] columnEditables = new boolean[] { false, false, false,false,false,false,false };
+         			public boolean isCellEditable(int row, int column) {
+         				return columnEditables[column];
+         			}
+        });
         table.getColumnModel().getColumn(0).setPreferredWidth(90);
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
         table.getColumnModel().getColumn(2).setPreferredWidth(100);
@@ -80,17 +87,20 @@ public class FCU extends Table {
 
 	@Override
 	public void addPane(JPanel contentPane) {
-		JButton btnNewButton = new JButton("新增內容");
+		btnNewButton = new JButton("新增內容");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int Column=choice.getSelectedIndex();
+				int Row=choice_2.getSelectedIndex();
+				Object Text=textField.getText();
+				table.setValueAt(Text, Row+1, Column+1);
 			}
 		});
 		
 		btnNewButton.setBounds(481, 21, 87, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("123");
+		btnNewButton_1 = new JButton("123");
 		btnNewButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -106,12 +116,13 @@ public class FCU extends Table {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
 			}
 		});
 		btnNewButton_2.setBounds(311, 584, 87, 23);
 		contentPane.add(btnNewButton_2);
 		
-		Choice choice = new Choice();
+		choice = new Choice();
 		choice.setBounds(58, 21, 93, 21);
 		choice.add("星期一");
 		choice.add("星期二");
@@ -122,17 +133,26 @@ public class FCU extends Table {
 		
 		contentPane.add(choice);
 		
-		Choice choice_2 = new Choice();
+		choice_2 = new Choice();
 		choice_2.setBounds(201, 21, 93, 21);
+		choice_2.add("第一節");
+		choice_2.add("第二節");
+		choice_2.add("第三節");
+		choice_2.add("第四節");
+		choice_2.add("第五節");
+		choice_2.add("第六節");
+		choice_2.add("第七節");
+		choice_2.add("第八節");
+		choice_2.add("第九節");
 		contentPane.add(choice_2);
 		
 		textField = new JTextField();
-		textField.setBounds(58, 585, 96, 21);
+		textField.setBounds(336, 22, 96, 21);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(336, 22, 96, 21);
+		textField_1.setBounds(58, 585, 96, 21);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		

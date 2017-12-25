@@ -9,7 +9,7 @@ public class TableCellTextAreaRenderer extends JTextArea implements TableCellRen
 	@Override
 	 public Component getTableCellRendererComponent(JTable table, Object value,   
 	           boolean isSelected, boolean hasFocus, int row, int column) {   
-	      
+	     
 	       int maxPreferredHeight = 0;   
 	       for (int i = 0; i < table.getColumnCount(); i++) {   
 	           setText("  " + table.getValueAt(row, i));   
@@ -19,10 +19,9 @@ public class TableCellTextAreaRenderer extends JTextArea implements TableCellRen
 	       }   
 	         
 	       if (table.getRowHeight(row) != maxPreferredHeight)  
-	         table.setRowHeight(50);   
-	         
+	         table.setRowHeight(50);  
 	         setFont(new Font("微軟正黑體", Font.PLAIN, 14));  
-	         setText(value == null ? "" : value.toString());   
+	         setText(value == null ? "" : value.toString());
 	         if(row%2 == 0){  
 	            setBackground(Color.decode("#E0FFFF"));  
 	        }else if(row%2 == 1){  
@@ -32,7 +31,7 @@ public class TableCellTextAreaRenderer extends JTextArea implements TableCellRen
 	   }   
 	 public TableCellTextAreaRenderer() {   
 	       setLineWrap(true); 
-	       setWrapStyleWord(true); 
+	       setWrapStyleWord(true);
 	   }
 
 	  
