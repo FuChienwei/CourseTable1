@@ -1,11 +1,16 @@
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-public class TableCellTextAreaRenderer extends JTextArea implements TableCellRenderer {
+public class TableCellTextAreaRenderer extends JTextArea implements TableCellRenderer,MouseListener {
 
 	@Override
 	 public Component getTableCellRendererComponent(JTable table, Object value,   
@@ -20,7 +25,7 @@ public class TableCellTextAreaRenderer extends JTextArea implements TableCellRen
 	       }   
 	         
 	       if (table.getRowHeight(row) != maxPreferredHeight)  
-	         table.setRowHeight(60);   
+	         table.setRowHeight(50);   
 	         
 	         setFont(new Font("微軟正黑體", Font.PLAIN, 14));  
 	         setText(value == null ? "" : value.toString());   
@@ -34,6 +39,31 @@ public class TableCellTextAreaRenderer extends JTextArea implements TableCellRen
 	 public TableCellTextAreaRenderer() {   
 	       setLineWrap(true); 
 	       setWrapStyleWord(true); 
-	   }   
+	   }
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("xxxxxxxxxxxxxxxxxxx");
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("xxxxxxxxxxxxxxxxxxx");
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("xxxxxxxxxxxxxxxxxxx");
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("xxxxxxxxxxxxxxxxxxx");
+	}
+	
 	  
 }
