@@ -1,16 +1,10 @@
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.*;
-import javax.swing.table.*;
 import java.awt.*;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-public class TableCellTextAreaRenderer extends JTextArea implements TableCellRenderer,MouseListener {
+public class TableCellTextAreaRenderer extends JTextArea implements TableCellRenderer{
 
 	@Override
 	 public Component getTableCellRendererComponent(JTable table, Object value,   
@@ -40,30 +34,6 @@ public class TableCellTextAreaRenderer extends JTextArea implements TableCellRen
 	       setLineWrap(true); 
 	       setWrapStyleWord(true); 
 	   }
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("xxxxxxxxxxxxxxxxxxx");
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("xxxxxxxxxxxxxxxxxxx");
-	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("xxxxxxxxxxxxxxxxxxx");
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("xxxxxxxxxxxxxxxxxxx");
-	}
-	
+
 	  
 }
