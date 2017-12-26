@@ -1,9 +1,13 @@
-import java.awt.Choice;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class FCU extends Table {
 	private JButton btnNewButton;
@@ -16,6 +20,7 @@ public class FCU extends Table {
         super.name=name;
         super.table=table;
         load();
+        //notice();
     }
 
 
@@ -61,6 +66,20 @@ public class FCU extends Table {
 
     @Override
     public void notice() {
+    	Timer timer=new Timer();
+		Calendar calendar=Calendar.getInstance();
+		calendar.set(Calendar.SECOND,calendar.get(Calendar.SECOND));
+
+    	timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				Date date=new Date();
+				System.out.println(date.getMinutes()+" "+date.getSeconds());
+				JOptionPane.showMessageDialog(new JFrame(),"123");
+				//æ¯”å°æ™‚é–“ è·³å‡ºæ¡†æ¡† åˆ°æ™‚å†è¨è«–
+			}
+		},calendar.getTime(),60000);		//  é–‹å§‹æ™‚é–“ , æ¯ä¸€åˆ†é˜åšä¸€æ¬¡
+
 
     }
 
@@ -87,7 +106,7 @@ public class FCU extends Table {
 
 	@Override
 	public void addPane(JPanel contentPane) {
-		btnNewButton = new JButton("·s¼W¤º®e");
+		btnNewButton = new JButton("ï¿½sï¿½Wï¿½ï¿½ï¿½e");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int Column=choice.getSelectedIndex();
@@ -124,26 +143,26 @@ public class FCU extends Table {
 		
 		choice = new Choice();
 		choice.setBounds(58, 21, 93, 21);
-		choice.add("¬P´Á¤@");
-		choice.add("¬P´Á¤G");
-		choice.add("¬P´Á¤T");
-		choice.add("¬P´Á¥|");
-		choice.add("¬P´Á¤­");
-		choice.add("¬P´Á¤»");
+		choice.add("ï¿½Pï¿½ï¿½ï¿½@");
+		choice.add("ï¿½Pï¿½ï¿½ï¿½G");
+		choice.add("ï¿½Pï¿½ï¿½ï¿½T");
+		choice.add("ï¿½Pï¿½ï¿½ï¿½|");
+		choice.add("ï¿½Pï¿½ï¿½ï¿½ï¿½");
+		choice.add("ï¿½Pï¿½ï¿½ï¿½ï¿½");
 		
 		contentPane.add(choice);
 		
 		choice_2 = new Choice();
 		choice_2.setBounds(201, 21, 93, 21);
-		choice_2.add("²Ä¤@¸`");
-		choice_2.add("²Ä¤G¸`");
-		choice_2.add("²Ä¤T¸`");
-		choice_2.add("²Ä¥|¸`");
-		choice_2.add("²Ä¤­¸`");
-		choice_2.add("²Ä¤»¸`");
-		choice_2.add("²Ä¤C¸`");
-		choice_2.add("²Ä¤K¸`");
-		choice_2.add("²Ä¤E¸`");
+		choice_2.add("ï¿½Ä¤@ï¿½`");
+		choice_2.add("ï¿½Ä¤Gï¿½`");
+		choice_2.add("ï¿½Ä¤Tï¿½`");
+		choice_2.add("ï¿½Ä¥|ï¿½`");
+		choice_2.add("ï¿½Ä¤ï¿½ï¿½`");
+		choice_2.add("ï¿½Ä¤ï¿½ï¿½`");
+		choice_2.add("ï¿½Ä¤Cï¿½`");
+		choice_2.add("ï¿½Ä¤Kï¿½`");
+		choice_2.add("ï¿½Ä¤Eï¿½`");
 		contentPane.add(choice_2);
 		
 		textField = new JTextField();
