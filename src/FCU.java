@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
@@ -61,6 +63,34 @@ public class FCU extends Table {
         table.getColumnModel().getColumn(6).setPreferredWidth(100);
         table.setDefaultRenderer(Object.class, new TableCellTextAreaRenderer());
         table.setBounds(10, 65, 702, 497);
+
+        table.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {   //點擊欄位可以取得row跟column
+				table.rowAtPoint(e.getPoint());
+				table.columnAtPoint(e.getPoint());
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
 
     }
 
