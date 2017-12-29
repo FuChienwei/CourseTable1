@@ -13,13 +13,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class FCU2 extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 	private String day[]= {"星期一","星期二","星期三","星期四","星期五","星期六"};
-	
+	private int t1;
 
 	public FCU2(int t, JTable fcuTable) {
 		setTitle("今日課表");
@@ -29,7 +30,7 @@ public class FCU2 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		t1=t;
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -67,17 +68,52 @@ public class FCU2 extends JFrame {
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setEditable(false);
-		textPane.setBounds(135, 10, 63, 21);
+		textPane.setBounds(60, 10, 63, 21);
 		textPane.setText(day[t-1]);
 		contentPane.add(textPane);
 		
 		JLabel label = new JLabel("\u4ECA\u5929\u662F");
-		label.setBounds(73, 16, 57, 15);
+		label.setBounds(10, 16, 57, 15);
 		contentPane.add(label);
+		
+		JButton btnLeft = new JButton("\u2190");
+		btnLeft.setFont(new Font("新細明體", Font.PLAIN, 22));
+		btnLeft.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(t1!=1) {
+					t1--;
+					table.setValueAt(day[t1-1],0,1);
+					for(int i=0;i<9;i++)
+					{
+						table.setValueAt(fcuTable.getValueAt(i+1,t1),i+1,1);
+					}
+				}
+				else {}
+			}
+		});
+		btnLeft.setBounds(147, 8, 63, 23);
+		contentPane.add(btnLeft);
+		
+		JButton btnRight = new JButton("\u2192");
+		btnRight.setFont(new Font("新細明體", Font.PLAIN, 22));
+		btnRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					if(t1!=6) {
+						t1++;
+						table.setValueAt(day[t1-1],0,1);
+						for(int i=0;i<9;i++)
+						{
+							table.setValueAt(fcuTable.getValueAt(i+1,t1),i+1,1);
+						}
+					}
+					else {}			
+			}
+		});
+		btnRight.setBounds(220, 8, 63, 23);
+		
+		
+		contentPane.add(btnRight);
 		
         table.setDefaultRenderer(Object.class, new TableCellTextAreaRenderer_1());
 	}
-
-
-
 }
