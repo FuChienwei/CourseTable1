@@ -14,6 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Label;
+import javax.swing.JTabbedPane;
+import java.awt.SystemColor;
 
 public class FCU2 extends JFrame {
 
@@ -63,6 +66,7 @@ public class FCU2 extends JFrame {
 		table.setValueAt(day[t-1],0,1);
 		for(int i=0;i<9;i++)
 		{
+			table.setValueAt(fcuTable.getValueAt(i+1,0),i+1,0);
 			table.setValueAt(fcuTable.getValueAt(i+1,t),i+1,1);
 		}
 		
@@ -91,6 +95,7 @@ public class FCU2 extends JFrame {
 				else {}
 			}
 		});
+		
 		btnLeft.setBounds(147, 8, 63, 23);
 		contentPane.add(btnLeft);
 		
