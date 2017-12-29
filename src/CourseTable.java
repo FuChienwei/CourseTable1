@@ -25,7 +25,7 @@ public class CourseTable extends JFrame {
 			public void run() {
 				try {
 					CourseTable frame = new CourseTable(new FCU("逢甲",new JTable()));
-					CourseTable frame1 = new CourseTable(new NTU("台大",new JTable()));
+					CourseTable frame1 = new CourseTable(new NTU("台灣",new JTable()));
 					frame.setVisible(true);
 					frame1.setVisible(true);
 

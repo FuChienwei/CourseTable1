@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseEvent;
@@ -18,11 +20,12 @@ public class FCU extends Table {
 	private JTextField textField;
 	private JTextField textField_1;
 	private Choice choice,choice_2;
+	private Date date;
     public FCU(String name, JTable table){
         super.name=name;
         super.table=table;
         load();
-        //notice();
+        notice();
     }
 
 
@@ -66,9 +69,10 @@ public class FCU extends Table {
 
         table.addMouseListener(new MouseListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {   //點擊欄位可以取得row跟column
+			public void mouseClicked(MouseEvent e) {   //暺���隞亙��ow頝olumn
 				table.rowAtPoint(e.getPoint());
 				table.columnAtPoint(e.getPoint());
+				System.out.println(table.rowAtPoint(e.getPoint())+" "+table.columnAtPoint(e.getPoint()) );
 			}
 
 			@Override
@@ -103,12 +107,12 @@ public class FCU extends Table {
     	timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				Date date=new Date();
-				System.out.println(date.getMinutes()+" "+date.getSeconds());
-				JOptionPane.showMessageDialog(new JFrame(),"123");
-				//比對時間 跳出框框 到時再討論
+				date=new Date();
+				System.out.println("星期"+date.getDay()+" "+date.getHours()+"點"+date.getMinutes()+"分"+date.getSeconds()+"秒");
+				JOptionPane.showMessageDialog(new JFrame(),"要上課囉");
+				//瘥���� 頝喳獢�� �������
 			}
-		},calendar.getTime(),60000);		//  開始時間 , 每一分鐘做一次
+		},calendar.getTime(),60000);		//  ������ , 瘥������甈�
 
 
     }
@@ -120,6 +124,17 @@ public class FCU extends Table {
 
     @Override
     public void switchView() {
+    	int t = date.getDay();
+    	EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FCU2 frame = new FCU2(t,table);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
     }
 
@@ -136,7 +151,7 @@ public class FCU extends Table {
 
 	@Override
 	public void addPane(JPanel contentPane) {
-		btnNewButton = new JButton("�s�W���e");
+		btnNewButton = new JButton("新增內容");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int Column=choice.getSelectedIndex();
@@ -149,12 +164,11 @@ public class FCU extends Table {
 		btnNewButton.setBounds(481, 21, 87, 23);
 		contentPane.add(btnNewButton);
 		
-		btnNewButton_1 = new JButton("123");
-		btnNewButton.addActionListener(new ActionListener(){
+		btnNewButton_1 = new JButton("今日課表");
+		btnNewButton_1.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				switchView();
 			}
 			
 		});
@@ -173,26 +187,26 @@ public class FCU extends Table {
 		
 		choice = new Choice();
 		choice.setBounds(58, 21, 93, 21);
-		choice.add("�P���@");
-		choice.add("�P���G");
-		choice.add("�P���T");
-		choice.add("�P���|");
-		choice.add("�P����");
-		choice.add("�P����");
+		choice.add("星期一");
+		choice.add("星期二");
+		choice.add("星期三");
+		choice.add("星期四");
+		choice.add("星期五");
+		choice.add("星期六");
 		
 		contentPane.add(choice);
 		
 		choice_2 = new Choice();
 		choice_2.setBounds(201, 21, 93, 21);
-		choice_2.add("�Ĥ@�`");
-		choice_2.add("�ĤG�`");
-		choice_2.add("�ĤT�`");
-		choice_2.add("�ĥ|�`");
-		choice_2.add("�Ĥ��`");
-		choice_2.add("�Ĥ��`");
-		choice_2.add("�ĤC�`");
-		choice_2.add("�ĤK�`");
-		choice_2.add("�ĤE�`");
+		choice_2.add("第一節");
+		choice_2.add("第二節");
+		choice_2.add("第三節");
+		choice_2.add("第四節");
+		choice_2.add("第五節");
+		choice_2.add("第六節");
+		choice_2.add("第七節");
+		choice_2.add("第八節");
+		choice_2.add("第九節");
 		contentPane.add(choice_2);
 		
 		textField = new JTextField();
