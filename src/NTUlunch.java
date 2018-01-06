@@ -12,12 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.Font;
+import javax.swing.JTextPane;
 
 public class NTUlunch extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField money;
-	private JTextField Food;
+	private JTextPane Food;
 	private String[] lunch={"雞腿便當","炒飯","炒麵","義式料理","定食8","牛肉麵"};
 	private int[] cost= {90,60,60,150,180,120};
 	private int i=1;
@@ -53,12 +54,12 @@ public class NTUlunch extends JFrame {
 			    	int num=r.nextInt(lunch.length);
 			    	if(cost[num]<=m)
 			    	{
-			    		Food.setText("吃\n"+lunch[num]);
+			    		Food.setText("吃 "+lunch[num]);
 			    		i=0;
 			    	}
 			    	else if(m<60)
 			    	{
-			    		Food.setText("你的錢不夠吃飯/n可以多帶些錢嗎?");
+			    		Food.setText("你的錢不夠吃飯\n可以多帶些錢嗎?");
 			    		i=0;
 			    	}
 			    
@@ -67,13 +68,12 @@ public class NTUlunch extends JFrame {
 					
 		}});
 		
-		Food = new JTextField();
-		Food.setFont(new Font("新細明體", Font.PLAIN, 30));
-		Food.setBackground(SystemColor.info);
+		Food = new JTextPane();
 		Food.setEditable(false);
+		Food.setFont(new Font("新細明體", Font.PLAIN, 28));
+		Food.setBackground(SystemColor.info);
 		Food.setBounds(30, 77, 259, 135);
 		contentPane.add(Food);
-		Food.setColumns(10);
 		
 		JButton btnClose = new JButton("\u73FE\u5728\u51FA\u9580\u8CB7");
 		btnClose.setBounds(294, 213, 112, 23);
