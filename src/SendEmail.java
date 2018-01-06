@@ -6,10 +6,10 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;  
 import javax.mail.Transport;  
 import javax.mail.internet.InternetAddress;  
-import javax.mail.internet.MimeMessage;  
+import javax.mail.internet.MimeMessage; 
 
 public class SendEmail
-{
+{	
 	 public SendEmail(){ 
 	        String host = "smtp.gmail.com";  
 	        int port = 587;  
@@ -42,9 +42,10 @@ public class SendEmail
 	        Transport.send(message);  
 	  
 	        System.out.println("Done");  
-	  
+
 	        } catch (MessagingException e) {  
 	            throw new RuntimeException(e);  
 	        }  
-	    }  
+	    }
+
 	}

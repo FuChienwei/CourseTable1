@@ -41,13 +41,14 @@ public class CourseTable extends JFrame {
 	 */
 	public CourseTable(Table t) {
 		setTitle(t.name+"\u5927\u5B78\u8AB2\u8868");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 749, 666);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
 		t.addPane(contentPane);
 		contentPane.add(t.getTable());
 		

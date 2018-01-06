@@ -27,37 +27,30 @@ public class FCU extends Table {
         super.table=table;
         load();
         notice();
+        
     }
 
 
     @Override
     public void load() {
-        data=new Object[][] {
-                {"", "\u661F\u671F\u4E00", "\u661F\u671F\u4E8C", "\u661F\u671F\u4E09", "\u661F\u671F\u56DB", "\u661F\u671F\u4E94", "\u661F\u671F\u516D"},
-                {"\u7B2C\u4E00\u7BC0 \uFF088:10-9:00\uFF09", "", "\u5C08\u696D\u5916\u8A9E", "\u6578\u4F4D\u901A\u8A0A", null, null, null},
-                {"\u7B2C\u4E8C\u7BC0\uFF089:10-10:00\uFF09", "\u6578\u4F4D\u901A\u8A0A(\u5BE6)", "\u5C08\u696D\u5916\u8A9E", "\u6578\u4F4D\u901A\u8A0A", null, null, null},
-                {"\u7B2C\u4E09\u7BC0\uFF0810:10-11:00\uFF09", "\u6578\u4F4D\u901A\u8A0A(\u5BE6)", null, null, null, null, null},
-                {"\u7B2C\u56DB\u7BC0\uFF0811:10-12:00\uFF09", "\u6578\u4F4D\u901A\u8A0A(\u5BE6)", "\u6578\u4F4D\u901A\u8A0A", null, null, null, null},
-                {"\u7B2C\u4E94\u7BC0\uFF0812:10-13:00\uFF09", null, null, null, null, null, null},
-                {"\u7B2C\u516D\u7BC0\uFF0813:10-14:00\uFF09", null, "\u73ED\u6703", null, null, null, null},
-                {"\u7B2C\u4E03\u7BC0\uFF0814:10-15:00\uFF09", null, null, null, null, null, null},
-                {"\u7B2C\u516B\u7BC0\uFF0815:10-16:00\uFF09", null, null, null, null, null, null},
-                {"\u7B2C\u4E5D\u7BC0\uFF0816:10-17:00\uFF09", null, null, null, null, null, null},
-        };
+ 
 
+    	//設定課表可不可以直接編輯
+    	
         table.setColumnSelectionAllowed(true);
         table.setCellSelectionEnabled(true);
-        table.setModel(new DefaultTableModel(
-                data,
+        table.setModel(new DefaultTableModel(data,
                 new String[] {
                         "New column", "New column", "New column", "New column", "New column", "New column", "New column"
                 }
- ) {
+        			) {
         		 boolean[] columnEditables = new boolean[] { false, false, false,false,false,false,false };
          			public boolean isCellEditable(int row, int column) {
          				return columnEditables[column];
          			}
         });
+        
+        //設定課表寬高間距
         table.getColumnModel().getColumn(0).setPreferredWidth(120);
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
         table.getColumnModel().getColumn(2).setPreferredWidth(100);
@@ -67,7 +60,21 @@ public class FCU extends Table {
         table.getColumnModel().getColumn(6).setPreferredWidth(100);
         table.setDefaultRenderer(Object.class, new TableCellTextAreaRenderer());
         table.setBounds(10, 65, 702, 497);
+        
+        
+  	//載入必修課程
+    	
+    	table.setValueAt("數位通訊(實)", 2, 1);
+    	table.setValueAt("數位通訊(實)", 3, 1);
+    	table.setValueAt("數位通訊(實)", 4, 1);
+    	table.setValueAt("專業外語", 1, 2);
+    	table.setValueAt("專業外語", 2, 2);
+    	table.setValueAt("數位通訊", 4, 2);
+    	table.setValueAt("班會", 6, 2);
+    	table.setValueAt("數位通訊", 1, 3);
+    	table.setValueAt("數位通訊", 2, 3);
 
+        
         table.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {   //暺���隞亙��ow頝olumn
@@ -116,6 +123,7 @@ public class FCU extends Table {
 							JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分"+"\n10分鐘後要上課囉!!");
 							//瘥���� 頝喳獢�� �������
 						}
+							
 					}
 			}
 		},calendar.getTime(),1000);		//每1秒跑一次
@@ -147,11 +155,6 @@ public class FCU extends Table {
     		}
 		return sec;
 		
-    }
-
-    @Override
-    public void slide() {
-    	//已經合併在switchView裡面 這裡可以考慮刪掉
     }
 
     @Override
@@ -190,15 +193,12 @@ public class FCU extends Table {
 
     }
 
-    @Override
-    public void contactbook() {
-    		
-    }
 
 
 	@Override
 	public void addPane(JPanel contentPane) {
 		btnNewButton = new JButton("新增內容");
+		btnNewButton.setBounds(481, 21, 87, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int Column=choice.getSelectedIndex();
@@ -207,11 +207,10 @@ public class FCU extends Table {
 				table.setValueAt(Text, Row+1, Column+1);
 			}
 		});
-		
-		btnNewButton.setBounds(481, 21, 87, 23);
-		contentPane.add(btnNewButton);
+
 		
 		btnNewButton_1 = new JButton("今日課表");
+		btnNewButton_1.setBounds(578, 584, 87, 23);
 		btnNewButton_1.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -219,18 +218,17 @@ public class FCU extends Table {
 			}
 			
 		});
-		btnNewButton_1.setBounds(578, 584, 87, 23);
-		contentPane.add(btnNewButton_1);
+	
 		
 		btnNewButton_2 = new JButton("隨機午餐");
+		btnNewButton_2.setBounds(311, 584, 87, 23);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lunch();
 				
 			}
 		});
-		btnNewButton_2.setBounds(311, 584, 87, 23);
-		contentPane.add(btnNewButton_2);
+		
 		
 		choice = new Choice();
 		choice.setBounds(58, 21, 93, 21);
@@ -241,7 +239,6 @@ public class FCU extends Table {
 		choice.add("星期五");
 		choice.add("星期六");
 		
-		contentPane.add(choice);
 		
 		choice_2 = new Choice();
 		choice_2.setBounds(201, 21, 93, 21);
@@ -254,17 +251,20 @@ public class FCU extends Table {
 		choice_2.add("第七節");
 		choice_2.add("第八節");
 		choice_2.add("第九節");
-		contentPane.add(choice_2);
+		
 		
 		textField = new JTextField();
 		textField.setBounds(336, 22, 96, 21);
-		contentPane.add(textField);
 		textField.setColumns(10);
 		
+		
+		contentPane.add(btnNewButton);
+		contentPane.add(btnNewButton_1);
+		contentPane.add(btnNewButton_2);
+		contentPane.add(choice);
+		contentPane.add(choice_2);
+		contentPane.add(textField);
 	
-		
-		
 	}
-
 
 }

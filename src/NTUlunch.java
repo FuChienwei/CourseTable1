@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.Font;
 import javax.swing.JTextPane;
+import javax.swing.DropMode;
 
 public class NTUlunch extends JFrame {
 
@@ -34,18 +35,20 @@ public class NTUlunch extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		money = new JTextField();
 		money.setBounds(165, 23, 96, 21);
-		contentPane.add(money);
 		money.setColumns(10);
+		
 		
 		JLabel label = new JLabel("\u8ACB\u8F38\u5165\u60A8\u7684\u9810\u7B97");
 		label.setBounds(43, 26, 112, 15);
-		contentPane.add(label);
+
 		
 		JButton btnRam = new JButton("\u62BD\u9078");
 		btnRam.setBounds(294, 22, 103, 23);
-		contentPane.add(btnRam);
+	
+		
 		btnRam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int m=Integer.parseInt(money.getText());
@@ -62,10 +65,8 @@ public class NTUlunch extends JFrame {
 			    		Food.setText("你的錢不夠吃飯\n可以多帶些錢嗎?");
 			    		i=0;
 			    	}
-			    
 				}
-				i=1;
-					
+				i=1;		
 		}});
 		
 		Food = new JTextPane();
@@ -73,11 +74,10 @@ public class NTUlunch extends JFrame {
 		Food.setFont(new Font("新細明體", Font.PLAIN, 28));
 		Food.setBackground(SystemColor.info);
 		Food.setBounds(30, 77, 259, 135);
-		contentPane.add(Food);
+		
 		
 		JButton btnClose = new JButton("\u73FE\u5728\u51FA\u9580\u8CB7");
 		btnClose.setBounds(294, 213, 112, 23);
-		contentPane.add(btnClose);
 		btnClose.addActionListener(new ActionListener() {
 
 			@Override
@@ -86,5 +86,12 @@ public class NTUlunch extends JFrame {
 			}
 			
 		});
+		
+		
+		contentPane.add(label);
+		contentPane.add(btnRam);
+		contentPane.add(money);
+		contentPane.add(Food);
+		contentPane.add(btnClose);
 	}
 }

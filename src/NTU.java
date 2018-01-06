@@ -8,35 +8,22 @@ import javax.swing.table.DefaultTableModel;
 
 public class NTU extends Table {
 	private JButton btnNewButton,btnNewButton_2;
+	private JLabel lblNewLabel;
 	private Date date=new Date();
     public NTU(String name, JTable table){
         super.name=name;
         super.table=table;
         load();
-      
+        //notice();
     }
 
     @Override
     public void load() {
-    	data=new Object[][] {
-            {"", "\u661F\u671F\u4E00", "\u661F\u671F\u4E8C", "\u661F\u671F\u4E09", "\u661F\u671F\u56DB", "\u661F\u671F\u4E94", "\u661F\u671F\u516D"},
-            {"\u7B2C\u4E00\u7BC0 \uFF088:10-9:00\uFF09",  null, null, null, null, null, null},
-            {"\u7B2C\u4E8C\u7BC0\uFF089:10-10:00\uFF09", null, null, null, null, null, null},
-            {"\u7B2C\u4E09\u7BC0\uFF0810:10-11:00\uFF09", null, null, null, null, null, null},
-            {"\u7B2C\u56DB\u7BC0\uFF0811:10-12:00\uFF09", null, null, null, null, null, null},
-            {"\u7B2C\u4E94\u7BC0\uFF0812:10-13:00\uFF09", null, null, null, null, null, null},
-            {"\u7B2C\u516D\u7BC0\uFF0813:10-14:00\uFF09", null,null, null, null, null, null},
-            {"\u7B2C\u4E03\u7BC0\uFF0814:10-15:00\uFF09", null, null, null, null, null, null},
-            {"\u7B2C\u516B\u7BC0\uFF0815:10-16:00\uFF09", null, null, null, null, null, null},
-            {"\u7B2C\u4E5D\u7BC0\uFF0816:10-17:00\uFF09", null, null, null, null, null, null},
-    };
-
-
+    	
     table.setColumnSelectionAllowed(true);
     table.setCellSelectionEnabled(true);
-
-        table.setModel(new DefaultTableModel(
-                data,
+    table.setBounds(10, 65, 702, 497);
+    table.setModel(new DefaultTableModel(data,
                 new String[] {"New column", "New column", "New column", "New column", "New column", "New column", "New column"})
         {
         		 boolean[] columnEditables = new boolean[] { false,true,true,true,true,true,true };
@@ -45,29 +32,37 @@ public class NTU extends Table {
          			}
         });
         
+    table.getColumnModel().getColumn(0).setPreferredWidth(120);
+    table.getColumnModel().getColumn(1).setPreferredWidth(100);
+    table.getColumnModel().getColumn(2).setPreferredWidth(100);
+    table.getColumnModel().getColumn(3).setPreferredWidth(100);
+    table.getColumnModel().getColumn(4).setPreferredWidth(100);
+    table.getColumnModel().getColumn(5).setPreferredWidth(100);
+    table.getColumnModel().getColumn(6).setPreferredWidth(100);
+    table.setDefaultRenderer(Object.class, new TableCellTextAreaRenderer());
+    
+    
+    table.setValueAt("財務管理", 2, 5);
+	table.setValueAt("財務管理", 3, 5);
+	table.setValueAt("財務管理", 4, 5);
+	table.setValueAt("日語文法", 7, 4);
+	table.setValueAt("日語文法", 8, 4);
+	table.setValueAt("日語文法", 9, 4);
+	table.setValueAt("貿易理論", 2, 3);
+	table.setValueAt("貿易理論", 3, 3);
+	table.setValueAt("貿易理論", 4, 3);
+	table.setValueAt("貨幣銀行學", 6, 2);
+	table.setValueAt("貨幣銀行學", 7, 2);
+	table.setValueAt("貨幣銀行學", 8, 2);
+	table.setValueAt("日文翻譯", 3, 1);
+	table.setValueAt("日文翻譯", 4, 1);
 
-        table.getColumnModel().getColumn(0).setPreferredWidth(120);
-        table.getColumnModel().getColumn(1).setPreferredWidth(100);
-        table.getColumnModel().getColumn(2).setPreferredWidth(100);
-        table.getColumnModel().getColumn(3).setPreferredWidth(100);
-        table.getColumnModel().getColumn(4).setPreferredWidth(100);
-        table.getColumnModel().getColumn(5).setPreferredWidth(100);
-        table.getColumnModel().getColumn(6).setPreferredWidth(100);
-        table.setDefaultRenderer(Object.class, new TableCellTextAreaRenderer());
-        table.setBounds(10, 65, 702, 497);
-
-
-
+     
     }
 
     @Override
     public void notice() {
     	new SendEmail();
-    }
-
-    @Override
-    public void slide() {
-
     }
 
     @Override
@@ -100,35 +95,32 @@ public class NTU extends Table {
 
     }
 
-    @Override
-    public void contactbook() {
-
-    }
-
 	@Override
 	public void addPane(JPanel contentPane) {
-		// TODO Auto-generated method stub
 		
 		btnNewButton= new JButton("今日課表");
 		btnNewButton.setBounds(578, 584, 87, 23);
-		contentPane.add(btnNewButton);
-		
 		btnNewButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				switchView();
-			}
-			
+			}	
 		});
+		
+		
 		btnNewButton_2 = new JButton("吃飯");
+		btnNewButton_2.setBounds(311, 584, 87, 23);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lunch();
-				
+				lunch();	
 			}
 		});
-		btnNewButton_2.setBounds(311, 584, 87, 23);
-		contentPane.add(btnNewButton_2);
-	
+
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(322, 30, 100, 15);
+		lblNewLabel.setText("信件已寄出!!");
 		
+		contentPane.add(btnNewButton);
+		contentPane.add(btnNewButton_2);
+		contentPane.add(lblNewLabel);
 	}
 }

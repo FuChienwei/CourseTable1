@@ -41,6 +41,7 @@ public class NTU2 extends JFrame {
 		this.t=t;
 		t1=t.getDay();
 		table = new JTable();
+		table.setBounds(10, 84, 1012, 127);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null, null, null, null, null, null},
@@ -69,6 +70,7 @@ public class NTU2 extends JFrame {
 		table.getColumnModel().getColumn(9).setPreferredWidth(90);
 		
 		table.setValueAt(day[t1-1],1,0);
+	
 		for(int i=0;i<9;i++)
 		{
 			table.setValueAt(ntuTable.getValueAt(i+1,0)+" ",0,i+1);
@@ -76,8 +78,10 @@ public class NTU2 extends JFrame {
 		}
 		
 		
-		table.setBounds(10, 84, 1012, 127);
+		table.setDefaultRenderer(Object.class, new TableCellTextAreaRenderer_1());
 		contentPane.add(table);
+		
+		//----------¡õ¡õ¡õ-----------------¤¸¥ó--------------¡õ¡õ¡õ----------------//
 		
 		JButton btnup = new JButton("\u2191");
 		btnup.setBounds(1030, 101, 62, 23);
@@ -94,7 +98,7 @@ public class NTU2 extends JFrame {
 					else {}			
 			}
 		});
-		contentPane.add(btnup);
+
 		
 		JButton btndown = new JButton("\u2193");
 		btndown.setBounds(1030, 151, 62, 23);
@@ -111,33 +115,38 @@ public class NTU2 extends JFrame {
 					else {}			
 			}
 		});
-		contentPane.add(btndown);
 		
+		
+		contentPane.add(btndown);
+		contentPane.add(btnup);
+	
 		
 		JLabel label = new JLabel("\u4ECA\u5929\u662F");
 		label.setBounds(100, 28, 50, 15);
-		contentPane.add(label);
+	
 	
 		JTextPane textPane = new JTextPane();
 		textPane.setEditable(false);
 		textPane.setBounds(160, 22, 70, 21);
 		textPane.setText(day[t1-1]);
-		contentPane.add(textPane);
+
 		
 		JLabel label_1 = new JLabel("\u73FE\u5728\u6642\u9593");
 		label_1.setBounds(286, 28, 62, 15);
-		contentPane.add(label_1);
+
 		
 		JTextPane textPane_1 = new JTextPane();
 		textPane_1.setEditable(false);
 		textPane_1.setText(t.getHours()+":"+t.getMinutes()+":"+t.getSeconds());	
-	
-		
-
 		textPane_1.setBounds(358, 22, 62, 21);
+		
+		
+		contentPane.add(textPane);
+		contentPane.add(label);
+		contentPane.add(label_1);
 		contentPane.add(textPane_1);
 		
-	     table.setDefaultRenderer(Object.class, new TableCellTextAreaRenderer_1());
+	    
 	}
 
 }
