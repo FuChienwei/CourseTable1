@@ -8,6 +8,7 @@ public class NTU extends Table {
         super.name=name;
         super.table=table;
         load();
+        notice();
     }
 
     @Override
@@ -33,7 +34,7 @@ public class NTU extends Table {
                 data,
                 new String[] {"New column", "New column", "New column", "New column", "New column", "New column", "New column"})
         {
-        		 boolean[] columnEditables = new boolean[] { true,true,true,true,true,true,true };
+        		 boolean[] columnEditables = new boolean[] { false,true,true,true,true,true,true };
          			public boolean isCellEditable(int row, int column) {
          				return columnEditables[column];
          			}
@@ -56,7 +57,7 @@ public class NTU extends Table {
 
     @Override
     public void notice() {
-
+    	new SendEmail();
     }
 
     @Override
