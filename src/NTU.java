@@ -1,14 +1,19 @@
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class NTU extends Table {
-
-
+	private JButton btnNewButton;
+	private Date date=new Date();
     public NTU(String name, JTable table){
         super.name=name;
         super.table=table;
         load();
-        notice();
+      
     }
 
     @Override
@@ -68,6 +73,16 @@ public class NTU extends Table {
     @Override
     public void switchView() {
 
+    	EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					NTU2 frame = new NTU2(date,table);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
     }
 
     @Override
@@ -83,6 +98,18 @@ public class NTU extends Table {
 	@Override
 	public void addPane(JPanel contentPane) {
 		// TODO Auto-generated method stub
+		
+		btnNewButton= new JButton("¤µ¤é½Òªí");
+		btnNewButton.setBounds(578, 584, 87, 23);
+		contentPane.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				switchView();
+			}
+			
+		});
+	
 		
 	}
 }
