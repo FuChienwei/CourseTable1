@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class NTU extends Table {
-	private JButton btnNewButton;
+	private JButton btnNewButton,btnNewButton_2;
 	private Date date=new Date();
     public NTU(String name, JTable table){
         super.name=name;
@@ -87,6 +87,16 @@ public class NTU extends Table {
 
     @Override
     public void lunch() {
+    	EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					NTUlunch frame1 = new NTUlunch();
+					frame1.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
     }
 
@@ -109,6 +119,15 @@ public class NTU extends Table {
 			}
 			
 		});
+		btnNewButton_2 = new JButton("¦Y¶º");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lunch();
+				
+			}
+		});
+		btnNewButton_2.setBounds(311, 584, 87, 23);
+		contentPane.add(btnNewButton_2);
 	
 		
 	}

@@ -175,7 +175,18 @@ public class FCU extends Table {
     	String[] lunch={"牛肉麵","蛋包飯","雞腿便當","排骨便當","炒飯","炒麵"};
     	Random r=new Random();
     	int num=r.nextInt(lunch.length);
-    	JOptionPane.showMessageDialog(new JFrame(),lunch[num]);
+    	int sum=date.getHours()*60+date.getMinutes();
+    	if(num==2||num==3)
+    	{
+    		if(sum>=720&&sum<=750) {
+    			JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]+"\n"+"現在人潮正多 不推薦購買便當\n請重新抽選!");}
+    		else{
+    			JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]+"\n"+"現在人潮正多 不推薦購買便當\n請重新抽選!");
+    		}
+    		
+    	}
+    	else
+    	JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]);
 
     }
 
@@ -250,10 +261,7 @@ public class FCU extends Table {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(58, 585, 96, 21);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+	
 		
 		
 	}
