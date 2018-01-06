@@ -23,7 +23,7 @@ public class TableCellTextAreaRenderer_1 extends JTextArea implements TableCellR
 	         setFont(new Font("·L³n¥¿¶ÂÅé", Font.PLAIN, 14));  
 	         setText(value == null ? "" : value.toString());
 	         if(row%2 == 0){  
-	            setBackground(Color.decode("#E0FFFF"));  
+	            setBackground(Color.decode("#FFE4E1"));  
 	        }else if(row%2 == 1){  
 	            setBackground(Color.decode("#FFFAFA")); 
 	         }  
