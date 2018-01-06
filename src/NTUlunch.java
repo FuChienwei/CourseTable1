@@ -56,6 +56,11 @@ public class NTUlunch extends JFrame {
 			    		Food.setText("吃\n"+lunch[num]);
 			    		i=0;
 			    	}
+			    	else if(m<60)
+			    	{
+			    		Food.setText("你的錢不夠吃飯/n可以多帶些錢嗎?");
+			    		i=0;
+			    	}
 			    
 				}
 				i=1;
