@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -171,6 +172,10 @@ public class FCU extends Table {
 
     @Override
     public void lunch() {
+    	String[] lunch={"牛肉麵","蛋包飯","雞腿便當","排骨便當","炒飯","炒麵"};
+    	Random r=new Random();
+    	int num=r.nextInt(lunch.length);
+    	JOptionPane.showMessageDialog(new JFrame(),lunch[num]);
 
     }
 
@@ -206,10 +211,10 @@ public class FCU extends Table {
 		btnNewButton_1.setBounds(578, 584, 87, 23);
 		contentPane.add(btnNewButton_1);
 		
-		btnNewButton_2 = new JButton("New button");
+		btnNewButton_2 = new JButton("隨機午餐");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lunch();
 				
 			}
 		});
