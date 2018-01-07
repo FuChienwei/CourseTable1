@@ -31,7 +31,7 @@ public class TableCellTextAreaRenderer_1 extends JTextArea implements TableCellR
 	            setBackground(Color.decode("#FFFAFA")); 
 	         }  
 	         
-	         int h=date.getHours()-10;
+	         int h=date.getHours();
 	         if(h>=8 && h<=17){
 	        	 if(row==h-7 && column==1){
 	        		  setBackground(Color.decode("#FFFF00")); 

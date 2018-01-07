@@ -163,7 +163,7 @@ public class FCU extends Table {
     	EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FCU2 frame = new FCU2(1,table);
+					FCU2 frame = new FCU2(t,table);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
