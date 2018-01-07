@@ -1,11 +1,14 @@
 import java.awt.Component;
+import java.util.Date;
+
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 public class TableCellTextAreaRenderer_1 extends JTextArea implements TableCellRenderer{
-
+	Date date=new Date();
+	
 	@Override
 	 public Component getTableCellRendererComponent(JTable table, Object value,   
 	           boolean isSelected, boolean hasFocus, int row, int column) {   
@@ -27,6 +30,14 @@ public class TableCellTextAreaRenderer_1 extends JTextArea implements TableCellR
 	        }else if(row%2 == 1){  
 	            setBackground(Color.decode("#FFFAFA")); 
 	         }  
+	         
+	         int h=date.getHours();
+	         if(h>=8 && h<=17){
+	        	 if(row==h-7 && column==1){
+	        		  setBackground(Color.decode("#FFFF00")); 
+	        	 }
+	         }
+
 	       return this;   
 	   }   
 	 public TableCellTextAreaRenderer_1() {   
