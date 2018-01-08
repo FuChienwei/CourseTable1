@@ -4,9 +4,6 @@ public interface Method {
 
     abstract public void load();              //載入
     abstract public void notice();            //通知 
-    abstract public void switchView();        //視圖/week/day/month   
-    abstract public void lunch();             //中餐
-    public JTable getTable();                 //抓表
-	abstract void addPane(JPanel contentPane);//抓元件
-
+	abstract void addComponent();            //延遲到子類別,新增元件ex:JButton
+	
 }

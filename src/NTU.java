@@ -10,11 +10,9 @@ public class NTU extends Table {
 	private JButton btnNewButton,btnNewButton_2;
 	private JLabel lblNewLabel;
 	private Date date=new Date();
-    public NTU(String name, JTable table){
-        super.name=name;
-        super.table=table;
-        load();
-        //notice();
+	
+    public NTU(String name){
+    	super(name);
     }
 
     @Override
@@ -62,47 +60,27 @@ public class NTU extends Table {
 
     @Override
     public void notice() {
-    	new SendEmail();
+    	//new SendEmail();  //暫時註解 不然一直寄信
     }
 
-    @Override
-    public void switchView() {
-
-    	EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NTU2 frame = new NTU2(date,table);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-    }
-
-    @Override
-    public void lunch() {
-    	EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NTUlunch frame1 = new NTUlunch();
-					frame1.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-
-    }
 
 	@Override
-	public void addPane(JPanel contentPane) {
+	public void addComponent() {
 		
 		btnNewButton= new JButton("今日課表");
 		btnNewButton.setBounds(578, 584, 87, 23);
 		btnNewButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				switchView();
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							NTU2 frame = new NTU2(date,table);
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}	
 		});
 		
@@ -111,7 +89,16 @@ public class NTU extends Table {
 		btnNewButton_2.setBounds(311, 584, 87, 23);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lunch();	
+		    	EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							NTUlunch frame1 = new NTUlunch();
+							frame1.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});	
 			}
 		});
 

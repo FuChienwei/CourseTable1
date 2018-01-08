@@ -22,12 +22,9 @@ public class FCU extends Table {
 	private JTextField textField_1;
 	private Choice choice,choice_2;
 	private Date date;
-    public FCU(String name, JTable table){
-        super.name=name;
-        super.table=table;
-        load();
-        notice();
-        
+	
+    public FCU(String name){
+    	super(name);
     }
 
 
@@ -77,10 +74,10 @@ public class FCU extends Table {
         
         table.addMouseListener(new MouseListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {   //暺���隞亙��ow頝olumn
+			public void mouseClicked(MouseEvent e) {   //取得點擊的ROW和COLUMN
 				table.rowAtPoint(e.getPoint());
 				table.columnAtPoint(e.getPoint());
-				System.out.println(table.rowAtPoint(e.getPoint())+" "+table.columnAtPoint(e.getPoint()) );
+				//System.out.println(table.rowAtPoint(e.getPoint())+" "+table.columnAtPoint(e.getPoint()) );
 			}
 
 			@Override
@@ -121,7 +118,6 @@ public class FCU extends Table {
 						if(table.getValueAt(TimeToSection(date), date.getDay())!=null) {
 							System.out.println("星期"+date.getDay()+" "+date.getHours()+"點"+date.getMinutes()+"分"+date.getSeconds()+"秒");
 							JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分"+"\n10分鐘後要上課囉!!");
-							//瘥���� 頝喳獢�� �������
 						}
 							
 					}
@@ -136,67 +132,38 @@ public class FCU extends Table {
     	switch(sum) {
     	case 480:
     		sec= 1;
+    		break;
     	case 540:
     		sec= 2;
+    		break;
     	case 600:
     		sec= 3;
+    		break;
     	case 660:
     		sec= 4;
+    		break;
     	case 720:
     		sec= 5;
+    		break;
     	case 780:
     		sec= 6;
+    		break;
     	case 840:
     		sec= 7;
+    		break;
     	case 900:
     		sec= 8;
+    		break;
     	case 960:
-    		sec=9;    	
-    		}
+    		sec=9;  
+    		break;
+    	}
 		return sec;
 		
     }
 
-    @Override
-    public void switchView() {
-    	int t = date.getDay();
-    	EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FCU2 frame = new FCU2(t,table);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-
-    }
-
-    @Override
-    public void lunch() {
-    	String[] lunch={"牛肉麵","蛋包飯","雞腿便當","排骨便當","炒飯","炒麵"};
-    	Random r=new Random();
-    	int num=r.nextInt(lunch.length);
-    	int sum=date.getHours()*60+date.getMinutes();
-    	if(num==2||num==3)
-    	{
-    		if(sum>=720&&sum<=750) {
-    			JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]+"\n"+"現在人潮正多 不推薦購買便當\n請重新抽選!");}
-    		else{
-    			JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]+"\n"+"現在人潮正多 不推薦購買便當\n請重新抽選!");
-    		}
-    		
-    	}
-    	else
-    	JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]);
-
-    }
-
-
-
 	@Override
-	public void addPane(JPanel contentPane) {
+	public void addComponent() {
 		btnNewButton = new JButton("新增內容");
 		btnNewButton.setBounds(481, 21, 87, 23);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -214,7 +181,17 @@ public class FCU extends Table {
 		btnNewButton_1.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				switchView();
+		    	int t = date.getDay();
+		    	EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							FCU2 frame = new FCU2(t,table);
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 			
 		});
@@ -224,7 +201,21 @@ public class FCU extends Table {
 		btnNewButton_2.setBounds(311, 584, 87, 23);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lunch();
+				String[] lunch={"牛肉麵","蛋包飯","雞腿便當","排骨便當","炒飯","炒麵"};
+		    	Random r=new Random();
+		    	int num=r.nextInt(lunch.length);
+		    	int sum=date.getHours()*60+date.getMinutes();
+		    	if(num==2||num==3)
+		    	{
+		    		if(sum>=720&&sum<=750) {
+		    			JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]+"\n"+"現在人潮正多 不推薦購買便當\n請重新抽選!");}
+		    		else{
+		    			JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]+"\n"+"現在人潮正多 不推薦購買便當\n請重新抽選!");
+		    		}
+		    		
+		    	}
+		    	else
+		    	JOptionPane.showMessageDialog(new JFrame(),"現在時間:"+date.getHours()+"點"+date.getMinutes()+"分\n你抽到  "+lunch[num]);
 				
 			}
 		});
